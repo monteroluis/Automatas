@@ -1,7 +1,5 @@
 import re
-
-from Principal import Principal
-
+from design.interfaz import *
 
 class Validation:
 
@@ -9,6 +7,8 @@ class Validation:
         self.Fin = ""
         self.digitA = "[a|A]"
         self.digitB = "[b|B]"
+        self.general = "[a|A|B|b]"
+        self.arrayStates = []
 
     def regularExpressions(self, character):
 
@@ -27,21 +27,29 @@ class Validation:
             return 3
 
     def validate(self, expression):
-        # tabla de trancisiones
-        table = [[1, 2, "E"], [2, "E", "E"], [1, 2, "A"]]
-        state = 0
-        # ciclo para recorrer la cadena
-        for character in expression:
 
-            # llamamos al metodo para saber si es un caracter valido y el valor retornado se guarda en charcaracter
-            charcaracter = self.regularExpressions(character)
-            if(charcaracter==3):
-                print("Error")
-                break
-            # guardamos en estado el valor obtenido en la tabla segun las cordenadas que recibio anteriormente
-            state = table[state][charcaracter]
+        if re.match(self.general, expression):
+            # tabla de trancisiones
 
-            if state == "E":
-                print("cadena no válida")
-                break;
+            table = [["E", 1], [3, 2], [5, 4], [6, "E"], [3, 4], [6, 7], [3, 4], [8, "E"], ["E", 7]]
+            state = 0
+            self.arrayStates.append(state)
+            # ciclo para recorrer la cadena
+            for character in expression:
+
+                # llamamos al metodo para saber si es un caracter valido y el valor retornado se guarda en charcaracter
+                charcaracter = self.regularExpressions(character)
+                # guardamos en estado el valor obtenido en la tabla segun las cordenadas que recibio anteriormente
+
+                state = table[state][charcaracter]
+                if (state == "E"):
+                    break
+                self.arrayStates.append(state)
+            if state == 1 or state == 2 or state == 4 or state == 5 or state == 6 or state == 8:
+                return  0
+            else:
+               return -1
+        else:
+            return -1
+
 

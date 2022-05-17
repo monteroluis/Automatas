@@ -1,7 +1,7 @@
 import sys
 import time
-
-from PyQt5.QtGui import QPainter
+from PyQt5.QtCore import Qt, QEvent
+from PyQt5.QtGui import QPainter, QPixmap, QPaintEvent
 from PyQt5.QtWidgets import QWidget, QApplication
 from Circle import Circle
 from Line import Line
@@ -16,17 +16,16 @@ class Principal(QWidget):
         QtWidgets.QWidget.__init__(self, parent)
         self.ui = Ui_ventanaPrincipal()
         self.ui.setupUi(self)
-        self.pintado = False;
-
-    # self.ui.btnVerificar.clicked.connect(self.activate)
+        self.ui.btnVerificar.clicked.connect(lambda: self.hacer())
 
     def paintEvent(self, event):
         qp = QPainter()
         qp.begin(self)
         self.drawLine(qp)
-        if self.activate():
-            self.selectState(qp, self.getState())
-            self.update()
+        qp = QPainter()
+        qp.begin(self)
+        self.drawLine(qp)
+        self.update()
         qp.end()
 
     def drawLine(self, qp):
@@ -83,52 +82,53 @@ class Principal(QWidget):
         line = LineCurve(qp, 400, 230, 420, 231)
         line.setTipeCurve(1)
         line.display()
-        self.pintado = True;
 
-    def selectState(self, qp, state):
+    def selectState(self, state):
+      #  def selectState(self, qp, state):
         # posicion de boton con ajuste de  40 pixeles en Y
 
         if state == 0:
-            nuevo = Circle(qp, 50, 230, 61)
+            self.ui.estado_0.setStyleSheet("Background-color:#1CFF2F")
+           # nuevo = Circle(qp, 50, 230, 61)
 
         elif state == 1:
-            nuevo = Circle(qp, 180, 230, 61)
-
+           # nuevo = Circle(qp, 180, 230, 61)
+           self.ui.estado_1.setStyleSheet("Background-color:#1CFF2F")
         elif state == 2:
-            nuevo = Circle(qp, 280, 130, 61)
-
+           # nuevo = Circle(qp, 280, 130, 61)
+           self.ui.estado_2.setStyleSheet("Background-color:#1CFF2F")
         elif state == 3:
-            nuevo = Circle(qp, 280, 340, 61)
-
+           # nuevo = Circle(qp, 280, 340, 61)
+           self.ui.estado_3.setStyleSheet("Background-color:#1CFF2F")
         elif state == 4:
-            nuevo = Circle(qp, 370, 230, 61)
-
+           # nuevo = Circle(qp, 370, 230, 61)
+           self.ui.estado_4.setStyleSheet("Background-color:#1CFF2F")
         elif state == 5:
-            nuevo = Circle(qp, 460, 130, 61)
-
+            #nuevo = Circle(qp, 460, 130, 61)
+            self.ui.estado_5.setStyleSheet("Background-color:#1CFF2F")
         elif state == 6:
-            nuevo = Circle(qp, 460, 340, 61)
-
+           # nuevo = Circle(qp, 460, 340, 61)
+           self.ui.estado_6.setStyleSheet("Background-color:#1CFF2F")
         elif state == 7:
-            nuevo = Circle(qp, 560, 230, 61)
-
+            #nuevo = Circle(qp, 560, 230, 61)
+            self.ui.estado_7.setStyleSheet("Background-color:#1CFF2F")
         else:
-            nuevo = Circle(qp, 700, 230, 61)
-        for i in range(20):
-            nuevo.display()
-            self.update()
+           # nuevo = Circle(qp, 700, 230, 61)
+           self.ui.estado_1.setStyleSheet("Background-color:#1CFF2F")
 
-    def activate(self):
-            valida = Validation()
-            valida.validate(self.ui.lineEdit.text())
-            return self.ui.lineEdit.text()
 
-    def getState(self):
-        return int(self.activate())
+    def hacer(self):
+        nueva = Validation()
+        res= nueva.validate(self.ui.lineEdit.text())
 
-    def setState(self, state):
-        return state
-
+        if res==0:
+          self.ui.valoracion.setText("Aceptada")
+          self.ui.valoracion.setStyleSheet("color:green;font-size:25px")
+        else:
+           self.ui.valoracion.setText("Rechazada")
+           self.ui.valoracion.setStyleSheet("color:red;font-size:25px")
+        for i in nueva.arrayStates:
+            self.selectState(i)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
