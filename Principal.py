@@ -4,6 +4,7 @@ from PyQt5.QtCore import Qt, QEvent
 from PyQt5.QtGui import QPainter, QPixmap, QPaintEvent
 from PyQt5.QtWidgets import QWidget, QApplication
 from Circle import Circle
+from Config import Config
 from Line import Line
 from LineCurve import LineCurve
 from Validation import Validation
@@ -17,6 +18,7 @@ class Principal(QWidget):
         self.ui = Ui_ventanaPrincipal()
         self.ui.setupUi(self)
         self.ui.btnVerificar.clicked.connect(lambda: self.hacer())
+        self.ui.btnconfiguraciones.clicked.connect(lambda: self.settings())
 
     def paintEvent(self, event):
         qp = QPainter()
@@ -114,7 +116,7 @@ class Principal(QWidget):
             self.ui.estado_7.setStyleSheet("Background-color:#1CFF2F")
         else:
            # nuevo = Circle(qp, 700, 230, 61)
-           self.ui.estado_1.setStyleSheet("Background-color:#1CFF2F")
+           self.ui.estado_8.setStyleSheet("Background-color:#1CFF2F")
 
 
     def hacer(self):
@@ -129,6 +131,12 @@ class Principal(QWidget):
            self.ui.valoracion.setStyleSheet("color:red;font-size:25px")
         for i in nueva.arrayStates:
             self.selectState(i)
+
+    def settings(self):
+      nuevo=Config()
+      nuevo.execute()
+
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

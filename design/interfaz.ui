@@ -600,7 +600,7 @@ color:Black;
      <property name="lineWidth">
       <number>0</number>
      </property>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="btnconfiguraciones">
       <property name="geometry">
        <rect>
         <x>760</x>
@@ -1483,7 +1483,7 @@ background-color:#D9682B;
       </property>
      </widget>
      <zorder>carga</zorder>
-     <zorder>pushButton</zorder>
+     <zorder>btnconfiguraciones</zorder>
      <zorder>pushButton_2</zorder>
      <zorder>estado_0</zorder>
      <zorder>estado_1</zorder>

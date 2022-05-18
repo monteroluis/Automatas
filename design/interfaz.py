@@ -218,10 +218,10 @@ class Ui_ventanaPrincipal(object):
         self.inferior.setFrameShadow(QtWidgets.QFrame.Plain)
         self.inferior.setLineWidth(0)
         self.inferior.setObjectName("inferior")
-        self.pushButton = QtWidgets.QPushButton(self.inferior)
-        self.pushButton.setGeometry(QtCore.QRect(760, 30, 51, 51))
-        self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton.setStyleSheet("QPushButton{\n"
+        self.btnconfiguraciones = QtWidgets.QPushButton(self.inferior)
+        self.btnconfiguraciones.setGeometry(QtCore.QRect(760, 30, 51, 51))
+        self.btnconfiguraciones.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnconfiguraciones.setStyleSheet("QPushButton{\n"
 "background-color:#E8702E;\n"
 "Border-radius:25px;\n"
 "border:0px;\n"
@@ -231,12 +231,12 @@ class Ui_ventanaPrincipal(object):
 "Background-color:#FF7D45;\n"
 "}\n"
 "")
-        self.pushButton.setText("")
+        self.btnconfiguraciones.setText("")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap("multimedia/images/configuraciones.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton.setIcon(icon2)
-        self.pushButton.setIconSize(QtCore.QSize(30, 30))
-        self.pushButton.setObjectName("pushButton")
+        self.btnconfiguraciones.setIcon(icon2)
+        self.btnconfiguraciones.setIconSize(QtCore.QSize(30, 30))
+        self.btnconfiguraciones.setObjectName("btnconfiguraciones")
         self.pushButton_2 = QtWidgets.QPushButton(self.inferior)
         self.pushButton_2.setGeometry(QtCore.QRect(760, 410, 51, 51))
         self.pushButton_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -557,7 +557,7 @@ class Ui_ventanaPrincipal(object):
         self.label_21.setFont(font)
         self.label_21.setObjectName("label_21")
         self.carga.raise_()
-        self.pushButton.raise_()
+        self.btnconfiguraciones.raise_()
         self.pushButton_2.raise_()
         self.estado_0.raise_()
         self.estado_1.raise_()
