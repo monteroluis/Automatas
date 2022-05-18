@@ -40,7 +40,8 @@ class Validation:
                 # llamamos al metodo para saber si es un caracter valido y el valor retornado se guarda en charcaracter
                 charcaracter = self.regularExpressions(character)
                 # guardamos en estado el valor obtenido en la tabla segun las cordenadas que recibio anteriormente
-
+                if  charcaracter==3:
+                 return -1
                 state = table[state][charcaracter]
                 if (state == "E"):
                     break

@@ -927,7 +927,7 @@ color:black;
 Background-color:white;
 border-radius:15px;
 padding-left:10px;
-
+padding-right:20px;
 }</string>
       </property>
       <property name="placeholderText">

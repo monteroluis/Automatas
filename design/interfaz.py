@@ -9,7 +9,11 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import gettext
 
+idiomas = ['fr_FR']
+t = gettext.translation('principal', 'locale', languages=idiomas, fallback=True)
+_ = t.gettext
 
 class Ui_ventanaPrincipal(object):
     def setupUi(self, ventanaPrincipal):
@@ -541,7 +545,7 @@ class Ui_ventanaPrincipal(object):
         self.label_22.setScaledContents(True)
         self.label_22.setObjectName("label_22")
         self.valoracion = QtWidgets.QLabel(self.inferior)
-        self.valoracion.setGeometry(QtCore.QRect(540, 430, 121, 31))
+        self.valoracion.setGeometry(QtCore.QRect(540, 430, 129, 31))
         font = QtGui.QFont()
         font.setItalic(False)
         self.valoracion.setFont(font)
@@ -600,8 +604,8 @@ class Ui_ventanaPrincipal(object):
 
     def retranslateUi(self, ventanaPrincipal):
         _translate = QtCore.QCoreApplication.translate
-        ventanaPrincipal.setWindowTitle(_translate("ventanaPrincipal", "Alphabet"))
-        self.btnMenu.setText(_translate("ventanaPrincipal", "Menú"))
+        ventanaPrincipal.setWindowTitle(_("ventanaPrincipal"))
+        self.btnMenu.setText(_("Menú"))
         self.estado_0.setText(_translate("ventanaPrincipal", "0"))
         self.estado_1.setText(_translate("ventanaPrincipal", "1"))
         self.estado_5.setText(_translate("ventanaPrincipal", "5"))
@@ -611,8 +615,8 @@ class Ui_ventanaPrincipal(object):
         self.estado_7.setText(_translate("ventanaPrincipal", "7"))
         self.estado_8.setText(_translate("ventanaPrincipal", "8"))
         self.estado_4.setText(_translate("ventanaPrincipal", "4"))
-        self.lineEdit.setPlaceholderText(_translate("ventanaPrincipal", "Ingresa una palabra"))
-        self.btnVerificar.setText(_translate("ventanaPrincipal", "Verificar"))
+        self.lineEdit.setPlaceholderText(_("Ingresa una palabra"))
+        self.btnVerificar.setText(_("Verificar"))
         self.label_7.setText(_translate("ventanaPrincipal", "b"))
         self.label_8.setText(_translate("ventanaPrincipal", "b"))
         self.label_9.setText(_translate("ventanaPrincipal", "a"))
@@ -627,7 +631,7 @@ class Ui_ventanaPrincipal(object):
         self.label_18.setText(_translate("ventanaPrincipal", "b"))
         self.label_19.setText(_translate("ventanaPrincipal", "b"))
         self.label_20.setText(_translate("ventanaPrincipal", "b"))
-        self.label_21.setText(_translate("ventanaPrincipal", "Estado"))
+        self.label_21.setText(_("Estado"))
 
 
 if __name__ == "__main__":
